@@ -23,6 +23,10 @@ public class Invoice
    @XmlElement
    InvoiceRow[] rows;
 
+   //only for jaxb
+   @XmlElement
+   Invoice      changeof;
+
    public static Invoice createTestObjects()
    {
       Invoice invoice = new Invoice();
@@ -35,7 +39,19 @@ public class Invoice
       invoice.rows[0].product.name = "Nexus 4";
       invoice.rows[1].product = new Product();
       invoice.rows[1].product.name = "Nexus 5";
+
+      //Shared references
       //invoice.rows[1].product = invoice.rows[0].product;
+
+      //Subclasses
+      /*
+      invoice.rows[1].product = new Smartphone();
+      invoice.rows[1].product.name = "Nexus 5";
+      ((Smartphone) invoice.rows[1].product).os = "Android";
+      */
+
+      //Circular reference
+      //invoice.changeof = invoice;
 
       return invoice;
    }

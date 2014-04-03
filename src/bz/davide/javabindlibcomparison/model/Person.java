@@ -9,5 +9,4 @@ public class Person
    @XmlElement
    String name;
 
-   Person parent;
 }

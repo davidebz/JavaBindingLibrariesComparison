@@ -20,6 +20,14 @@ public class XmlJsonMarshaller_Helper extends bz.davide.dmxmljson.marshalling.Ma
                structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
             }
             Object value;
+            // changeof
+            value = ((bz.davide.javabindlibcomparison.model.Invoice)obj).changeof;
+            if (value == null)
+               structure.property("changeof").nullValue();
+            else
+            {
+                     internalMarschall(value, value.getClass().getName(),"bz.davide.javabindlibcomparison.model.Invoice", structure.property("changeof").structure(), identities, seq, false);
+            }
             // customer
             value = ((bz.davide.javabindlibcomparison.model.Invoice)obj).customer;
             if (value == null)
@@ -62,6 +70,28 @@ public class XmlJsonMarshaller_Helper extends bz.davide.dmxmljson.marshalling.Ma
                structure.close();
          }
       });
+      this.putClassMarshaller("bz.davide.javabindlibcomparison.model.Smartphone", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            internalMarschall(obj, "bz.davide.javabindlibcomparison.model.Product", "N/A",structure, identities, seq, true);
+            Object value;
+            // os
+            value = ((bz.davide.javabindlibcomparison.model.Smartphone)obj).os;
+            if (value == null)
+               structure.property("os").nullValue();
+            else
+            {
+                    structure.property("os").string((String)value);                          
+            }
+            if (!superClass)
+               structure.close();
+         }
+      });
       this.putClassMarshaller("bz.davide.javabindlibcomparison.model.Person", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
          @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
             if (!superClass) {
@@ -78,14 +108,6 @@ public class XmlJsonMarshaller_Helper extends bz.davide.dmxmljson.marshalling.Ma
             else
             {
                     structure.property("name").string((String)value);                          
-            }
-            // parent
-            value = ((bz.davide.javabindlibcomparison.model.Person)obj).parent;
-            if (value == null)
-               structure.property("parent").nullValue();
-            else
-            {
-                     internalMarschall(value, value.getClass().getName(),"bz.davide.javabindlibcomparison.model.Person", structure.property("parent").structure(), identities, seq, false);
             }
             if (!superClass)
                structure.close();
