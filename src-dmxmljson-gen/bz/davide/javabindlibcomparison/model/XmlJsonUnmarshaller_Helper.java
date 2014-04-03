@@ -110,6 +110,9 @@ public class XmlJsonUnmarshaller_Helper extends bz.davide.dmxmljson.unmarshallin
             // name
             if (ret.name != null)
                throw new RuntimeException("The constructor initialized the field bz.davide.javabindlibcomparison.model.Person.name");
+            // parent
+            if (ret.parent != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.javabindlibcomparison.model.Person.parent");
          }
       });
       this.putInstanceFactory("bz.davide.javabindlibcomparison.model.Person", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
@@ -135,6 +138,21 @@ public class XmlJsonUnmarshaller_Helper extends bz.davide.dmxmljson.unmarshallin
                {
                   ((bz.davide.javabindlibcomparison.model.Person)obj).name = value.string();
                }
+            // parent
+            if ((value = structure.property("parent")) != null)
+               if (value.isNull())
+                  ((bz.davide.javabindlibcomparison.model.Person)obj).parent = null;
+               else
+               {
+                  String refid = value.structure().getRefId();    
+                  if (refid != null)                              
+                     ((bz.davide.javabindlibcomparison.model.Person)obj).parent = (bz.davide.javabindlibcomparison.model.Person)identities.get(refid);
+                  else {
+                     Object o = newInstance(value.structure().getRuntimeClassName("Person"));              
+                     internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
+                     ((bz.davide.javabindlibcomparison.model.Person)obj).parent = (bz.davide.javabindlibcomparison.model.Person)o;
+                  }
+               }
             structure.close();
          }
       });
@@ -143,6 +161,9 @@ public class XmlJsonUnmarshaller_Helper extends bz.davide.dmxmljson.unmarshallin
             // position
             if (ret.position != 0)
                throw new RuntimeException("The constructor initialized the field bz.davide.javabindlibcomparison.model.InvoiceRow.position");
+            // product
+            if (ret.product != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.javabindlibcomparison.model.InvoiceRow.product");
          }
       });
       this.putInstanceFactory("bz.davide.javabindlibcomparison.model.InvoiceRow", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
@@ -167,6 +188,54 @@ public class XmlJsonUnmarshaller_Helper extends bz.davide.dmxmljson.unmarshallin
                else
                {
                   ((bz.davide.javabindlibcomparison.model.InvoiceRow)obj).position = (int)value.integer();
+               }
+            // product
+            if ((value = structure.property("product")) != null)
+               if (value.isNull())
+                  ((bz.davide.javabindlibcomparison.model.InvoiceRow)obj).product = null;
+               else
+               {
+                  String refid = value.structure().getRefId();    
+                  if (refid != null)                              
+                     ((bz.davide.javabindlibcomparison.model.InvoiceRow)obj).product = (bz.davide.javabindlibcomparison.model.Product)identities.get(refid);
+                  else {
+                     Object o = newInstance(value.structure().getRuntimeClassName("Product"));              
+                     internalUnmarschall(value.structure(), o.getClass().getName(), o, identities); 
+                     ((bz.davide.javabindlibcomparison.model.InvoiceRow)obj).product = (bz.davide.javabindlibcomparison.model.Product)o;
+                  }
+               }
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.javabindlibcomparison.model.Product", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.javabindlibcomparison.model.Product>() {
+         @Override public void check(bz.davide.javabindlibcomparison.model.Product  ret){
+            // name
+            if (ret.name != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.javabindlibcomparison.model.Product.name");
+         }
+      });
+      this.putInstanceFactory("bz.davide.javabindlibcomparison.model.Product", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
+         @Override public Object newInstance() throws Exception {
+            bz.davide.javabindlibcomparison.model.Product ret = new bz.davide.javabindlibcomparison.model.Product();
+            emptyObjectCheck.get("bz.davide.javabindlibcomparison.model.Product").check(ret);
+            return ret;
+         }
+      });
+
+      this.putClassUnmarshaller("bz.davide.javabindlibcomparison.model.Product", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
+         @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
+            structure.open();
+            String id = structure.getId();
+            if (id != null)
+               identities.put(id, obj);
+            bz.davide.dmxmljson.unmarshalling.Value value;
+            // name
+            if ((value = structure.property("name")) != null)
+               if (value.isNull())
+                  ((bz.davide.javabindlibcomparison.model.Product)obj).name = null;
+               else
+               {
+                  ((bz.davide.javabindlibcomparison.model.Product)obj).name = value.string();
                }
             structure.close();
          }

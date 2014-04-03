@@ -8,4 +8,6 @@ public class Person
    //only for jaxb
    @XmlElement
    String name;
+
+   Person parent;
 }

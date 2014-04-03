@@ -31,6 +31,12 @@ public class Invoice
       invoice.rows[1] = new InvoiceRow();
       invoice.customer = new Person();
       invoice.customer.name = "Davide";
+      invoice.rows[0].product = new Product();
+      invoice.rows[0].product.name = "Nexus 4";
+      invoice.rows[1].product = new Product();
+      invoice.rows[1].product.name = "Nexus 5";
+      //invoice.rows[1].product = invoice.rows[0].product;
+
       return invoice;
    }
 }

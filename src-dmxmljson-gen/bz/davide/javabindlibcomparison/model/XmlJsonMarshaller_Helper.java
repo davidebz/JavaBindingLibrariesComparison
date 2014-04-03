@@ -79,6 +79,14 @@ public class XmlJsonMarshaller_Helper extends bz.davide.dmxmljson.marshalling.Ma
             {
                     structure.property("name").string((String)value);                          
             }
+            // parent
+            value = ((bz.davide.javabindlibcomparison.model.Person)obj).parent;
+            if (value == null)
+               structure.property("parent").nullValue();
+            else
+            {
+                     internalMarschall(value, value.getClass().getName(),"bz.davide.javabindlibcomparison.model.Person", structure.property("parent").structure(), identities, seq, false);
+            }
             if (!superClass)
                structure.close();
          }
@@ -99,6 +107,35 @@ public class XmlJsonMarshaller_Helper extends bz.davide.dmxmljson.marshalling.Ma
             else
             {
                     structure.property("position").integer((Integer)value);                          
+            }
+            // product
+            value = ((bz.davide.javabindlibcomparison.model.InvoiceRow)obj).product;
+            if (value == null)
+               structure.property("product").nullValue();
+            else
+            {
+                     internalMarschall(value, value.getClass().getName(),"bz.davide.javabindlibcomparison.model.Product", structure.property("product").structure(), identities, seq, false);
+            }
+            if (!superClass)
+               structure.close();
+         }
+      });
+      this.putClassMarshaller("bz.davide.javabindlibcomparison.model.Product", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            Object value;
+            // name
+            value = ((bz.davide.javabindlibcomparison.model.Product)obj).name;
+            if (value == null)
+               structure.property("name").nullValue();
+            else
+            {
+                    structure.property("name").string((String)value);                          
             }
             if (!superClass)
                structure.close();
