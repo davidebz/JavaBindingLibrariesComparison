@@ -28,6 +28,41 @@ public class XmlJsonMarshaller_Helper extends bz.davide.dmxmljson.marshalling.Ma
             {
                     structure.property("number").string((String)value);                          
             }
+            // rows
+            value = ((bz.davide.javabindlibcomparison.model.Invoice)obj).rows;
+            if (value == null)
+               structure.property("rows").nullValue();
+            else
+            {
+               bz.davide.javabindlibcomparison.model.InvoiceRow[] rawarray = (bz.davide.javabindlibcomparison.model.InvoiceRow[])value;                        
+               bz.davide.dmxmljson.marshalling.Array array = structure.property("rows").array(rawarray.length);        
+               for (Object o: rawarray) {                                    
+                  if (o == null)                                              
+                     array.item().nullValue();                                
+                     internalMarschall(o, o.getClass().getName(), "bz.davide.javabindlibcomparison.model.InvoiceRow", array.item().structure(), identities, seq, false);
+               }                                                              
+            }
+            // total
+            value = ((bz.davide.javabindlibcomparison.model.Invoice)obj).total;
+            if (value == null)
+               structure.property("total").nullValue();
+            else
+            {
+                    structure.property("total").integer((Integer)value);                          
+            }
+            if (!superClass)
+               structure.close();
+         }
+      });
+      this.putClassMarshaller("bz.davide.javabindlibcomparison.model.InvoiceRow", new bz.davide.dmxmljson.marshalling.ClassMarshaller() {
+         @Override public void marshall(Object obj, String compileTimeClassName, bz.davide.dmxmljson.marshalling.Structure structure, java.util.IdentityHashMap<Object, bz.davide.dmxmljson.marshalling.Structure> identities, long[] seq, boolean superClass) throws Exception {
+            if (!superClass) {
+               if (isReference(structure, obj, identities, seq))
+                  return;
+               identities.put(obj, structure);
+               structure.open(shortName(compileTimeClassName), shortName(obj.getClass().getName()), null);
+            }
+            Object value;
             if (!superClass)
                structure.close();
          }

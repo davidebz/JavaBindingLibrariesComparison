@@ -17,7 +17,7 @@ public class TestJackson
       mapper.setVisibility(PropertyAccessor.ALL, Visibility.NONE);
       mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
 
-      String jsonText = mapper.writeValueAsString(obj1);
+      String jsonText = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj1);
       System.out.println(jsonText);
 
       // Now parse the json

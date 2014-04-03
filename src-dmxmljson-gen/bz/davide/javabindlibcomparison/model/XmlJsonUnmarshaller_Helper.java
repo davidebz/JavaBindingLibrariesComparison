@@ -16,6 +16,12 @@ public class XmlJsonUnmarshaller_Helper extends bz.davide.dmxmljson.unmarshallin
             // number
             if (ret.number != null)
                throw new RuntimeException("The constructor initialized the field bz.davide.javabindlibcomparison.model.Invoice.number");
+            // rows
+            if (ret.rows != null)
+               throw new RuntimeException("The constructor initialized the field bz.davide.javabindlibcomparison.model.Invoice.rows");
+            // total
+            if (ret.total != 0)
+               throw new RuntimeException("The constructor initialized the field bz.davide.javabindlibcomparison.model.Invoice.total");
          }
       });
       this.putInstanceFactory("bz.davide.javabindlibcomparison.model.Invoice", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
@@ -41,6 +47,65 @@ public class XmlJsonUnmarshaller_Helper extends bz.davide.dmxmljson.unmarshallin
                {
                   ((bz.davide.javabindlibcomparison.model.Invoice)obj).number = value.string();
                }
+            // rows
+            if ((value = structure.property("rows")) != null)
+               if (value.isNull())
+                  ((bz.davide.javabindlibcomparison.model.Invoice)obj).rows = null;
+               else
+               {
+                  bz.davide.dmxmljson.unmarshalling.Array arr = value.array();        
+                  arr.open();        
+                  bz.davide.javabindlibcomparison.model.InvoiceRow[] arrayList = new bz.davide.javabindlibcomparison.model.InvoiceRow[arr.length()];       
+                  for (int i = 0; i < arrayList.length; i++) {                       
+                     value = arr.nextItem();                                       
+                     if (value.isNull())                                           
+                        arrayList[i] = null;                                       
+                     else                                                          
+                     {                                                                   
+                        bz.davide.dmxmljson.unmarshalling.Structure tmpStructure = value.structure();
+                        String refid = tmpStructure.getRefId();    
+                        if (refid != null)                              
+                           arrayList[i] = (bz.davide.javabindlibcomparison.model.InvoiceRow)(identities.get(refid));                                                
+                        else {
+                           Object o = newInstance(tmpStructure.getRuntimeClassName("InvoiceRow"));              
+                           internalUnmarschall(tmpStructure, o.getClass().getName(), o, identities); 
+                           arrayList[i] = (bz.davide.javabindlibcomparison.model.InvoiceRow)(o);                                                
+                        }
+                     }                                                                   
+                  }                                                                   
+                  arr.close();        
+                  ((bz.davide.javabindlibcomparison.model.Invoice)obj).rows = arrayList;
+               }
+            // total
+            if ((value = structure.property("total")) != null)
+               if (value.isNull())
+                  new RuntimeException("Impossibile value for primitive type");
+               else
+               {
+                  ((bz.davide.javabindlibcomparison.model.Invoice)obj).total = (int)value.integer();
+               }
+            structure.close();
+         }
+      });
+      this.emptyObjectCheck.put("bz.davide.javabindlibcomparison.model.InvoiceRow", new bz.davide.dmxmljson.unmarshalling.EmptyFieldChecker<bz.davide.javabindlibcomparison.model.InvoiceRow>() {
+         @Override public void check(bz.davide.javabindlibcomparison.model.InvoiceRow  ret){
+         }
+      });
+      this.putInstanceFactory("bz.davide.javabindlibcomparison.model.InvoiceRow", new bz.davide.dmxmljson.unmarshalling.InstanceFactory() {
+         @Override public Object newInstance() throws Exception {
+            bz.davide.javabindlibcomparison.model.InvoiceRow ret = new bz.davide.javabindlibcomparison.model.InvoiceRow();
+            emptyObjectCheck.get("bz.davide.javabindlibcomparison.model.InvoiceRow").check(ret);
+            return ret;
+         }
+      });
+
+      this.putClassUnmarshaller("bz.davide.javabindlibcomparison.model.InvoiceRow", new bz.davide.dmxmljson.unmarshalling.ClassUnmarshaller() {
+         @Override public void unmarshall(bz.davide.dmxmljson.unmarshalling.Structure structure, Object obj, java.util.HashMap<String, Object> identities) throws Exception {
+            structure.open();
+            String id = structure.getId();
+            if (id != null)
+               identities.put(id, obj);
+            bz.davide.dmxmljson.unmarshalling.Value value;
             structure.close();
          }
       });
