@@ -15,6 +15,7 @@ public class TestJaxb
       Object obj1 = Invoice.createTestObjects();
 
       JAXBContext jaxbContext = JAXBContext.newInstance(Invoice.class);
+
       Marshaller marshaller = jaxbContext.createMarshaller();
       marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
       StringWriter stringWriter = new StringWriter();
